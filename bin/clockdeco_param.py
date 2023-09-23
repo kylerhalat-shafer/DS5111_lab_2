@@ -2,23 +2,23 @@ import time
 
 DEFAULT_FMT = '[{elapsed:0.8f}s] {name}({args}) -> {result}'
 
-def clock(fmt=DEFAULT_FMT):  1
-    def decorate(func):      2
-        def clocked(*_args): 3
+def clock(fmt=DEFAULT_FMT):
+    def decorate(func):
+        def clocked(*_args):
             t0 = time.time()
-            _result = func(*_args)  4
+            _result = func(*_args)
             elapsed = time.time() - t0
             name = func.__name__
-            args = ', '.join(repr(arg) for arg in _args)  5
-            result = repr(_result)  6
-            print(fmt.format(**locals()))  7
-            return _result  8
-        return clocked  9
-    return decorate  10
+            args = ', '.join(repr(arg) for arg in _args)
+            result = repr(_result)
+            print(fmt.format(**locals()))
+            return _result
+        return clocked
+    return decorate
 
 if __name__ == '__main__':
 
-    @clock()  11
+    @clock()
     def snooze(seconds):
         time.sleep(seconds)
 
