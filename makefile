@@ -8,6 +8,9 @@ env:
 run:
 	@env/bin/python bin/clockdeco_param.py
 
+lint:
+	@pylint --generate-rcfile >> pylintrc
+
 .PHONY: tests
 tests:
 	pytest -vv tests
