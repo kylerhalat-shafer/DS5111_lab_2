@@ -9,8 +9,8 @@ run:
 	@env/bin/python bin/clockdeco_param.py
 
 lint:
-    @echo "Linting..."
-    @source env/bin/activate && pylint bin/perceptron.py.1
+	@echo "Linting..."
+	@source env/bin/activate && pylint bin/perceptron.py.1
 
 
 .PHONY: tests
