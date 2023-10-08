@@ -10,7 +10,7 @@ run:
 
 lint:
 	@echo "Linting..."
-	@source env/bin/activate && pylint bin/perceptron.py.1
+	@. env/bin/activate && pylint bin/perceptron.py.1
 
 
 .PHONY: tests
