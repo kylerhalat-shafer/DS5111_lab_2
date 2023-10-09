@@ -8,40 +8,19 @@ sys.path.append("..")
 from bin.perceptron_module import Perceptron
 
 class TestPerceptron(unittest.TestCase):
-
-    @pytest.mark.parametrize("training_data, labels, expected_outputs", [
-       # First dataset
-       ([
-          [1, 1],
-          [1, 0],
-          [0, 1],
-          [0, 0],
-        ], [1, 1, 1, 0], [1, 1, 1, 0]),
-
-        # Add more datasets in a similar fashion
-        # (training_data, labels, expected_outputs),
-    ])
-
-    def test_perceptron_logic(training_data, labels, expected_outputs):
+    def test_perceptron_logic(self):
         the_perceptron = Perceptron()
-        the_perceptron.train(training_data, labels)
+        the_perceptron.train([
+            [1,1],
+            [1,0],
+            [0,1],
+            [0,0],
+        ], [1,1,1,0])
 
-        for i, row in enumerate(training_data):
-            assert the_perceptron.predict(row) == expected_outputs[i], f"Expected {expected_outputs[i]} for input {row}"
-
-   # def test_perceptron_logic(self):
-   #     the_perceptron = Perceptron()
-   #     the_perceptron.train([
-   #         [1,1],
-   #         [1,0],
-   #         [0,1],
-   #         [0,0],
-   #     ], [1,1,1,0])
-
-   #     self.assertEqual(the_perceptron.predict([1,1]), 1, "Expected 1 for input [1,1]")
-   #     self.assertEqual(the_perceptron.predict([1,0]), 1, "Expected 1 for input [1,0]")
-   #     self.assertEqual(the_perceptron.predict([0,1]), 1, "Expected 1 for input [0,1]")
-   #     self.assertEqual(the_perceptron.predict([0,0]), 0, "Expected 0 for input [0,0]")
+        self.assertEqual(the_perceptron.predict([1,1]), 1, "Expected 1 for input [1,1]")
+        self.assertEqual(the_perceptron.predict([1,0]), 1, "Expected 1 for input [1,0]")
+        self.assertEqual(the_perceptron.predict([0,1]), 1, "Expected 1 for input [0,1]")
+        self.assertEqual(the_perceptron.predict([0,0]), 0, "Expected 0 for input [0,0]")
 
     @pytest.mark.xfail(reason="this test is expected to fail.")
     def test_perceptron_failure(self):
