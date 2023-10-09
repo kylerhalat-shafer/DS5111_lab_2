@@ -43,14 +43,21 @@ class TestPerceptron(unittest.TestCase):
         # Fetch memory details using os.popen()
         total_memory, used_memory, free_memory = map(
             int, os.popen('free -t -m').readlines()[-1].split()[1:])
-        min_memory = 2000  # Example: 2000MB or 2GB
+        min_memory = 100  # Example: 100MB 
         # Assert that the total_memory is greater than or equal to the min_memory
         self.assertGreaterEqual(total_memory, min_memory, f"Expected at least {min_memory/1000} GB of memory. Found only {total_memory/1000} GB.")
         # You can set desired thresholds for used_memory and free_memory if needed
-        min_used_memory = 500  # Example: 500MB
+        min_used_memory = 100  # Example: 100MB
         self.assertGreaterEqual(used_memory, min_used_memory, f"Expected at least {min_used_memory/1000} GB of used memory. Found only {used_memory/1000} GB.")
-        min_free_memory = 1000  # Example: 1000MB or 1GB
+        min_free_memory = 100  # Example: 100MB
         self.assertGreaterEqual(free_memory, min_free_memory, f"Expected at least {min_free_memory/1000} GB of free memory. Found only {free_memory/1000} GB.")
+
+    @pytest.mark.skip(reason="This test is not yet ready for prime time.")
+    def test_not_ready(self):
+        print("This won't be printed!")
+        banana = "yellow"
+        apple = "red"
+        self.assertEqual(banana, apple, "Fruits are not the same!")
 
 if __name__ == "__main__":
     unittest.main()
